@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://getbootstrap.com/docs-assets/ico/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style>
+    body {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #eee;
+      background-image: url("NP.jpg");
+      background-repeat: no-repeat;
+      background-size:cover;
+    }
+    .form-signin {
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+    .form-signin .form-signin-heading,
+    .form-signin .checkbox {
+      margin-bottom: 10px;
+    }
+    .form-signin .checkbox {
+      font-weight: normal;
+    }
+    .form-signin .form-control {
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    .form-signin input[type="text"] {
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="http://getbootstrap.com/docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container" id= "app" background = "white">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Weather App</h2>
+        <input type="text" class="form-control" placeholder="Id" required autofocus v-model="name">
+        <input type="password" class="form-control" placeholder="Password" required v-model="pwd">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" v-on:click="doLogin">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+<script>
+
+
+var app = new Vue({
+  el: "#app",
+  data: {
+    name: "",
+    pwd: "",
+    err: {
+      name: {
+        isValid: true,
+        text: "Name is invalid"
+      },
+      pwd: {
+        isValid: true,
+        text: "Password is invalid"
+      },
+    },
+    a1: {
+      	id: 'a',
+      	password: 'a',
+      },
+    a2: {
+      	id: 'nick',
+      	password: 'nick2018',
+      },
+    a3: {
+      	id: 'rick',
+      	password: 'rick2018',
+      },
+    a4: {
+      	id: 'paul',
+      	password: 'paul2018',
+      }
+      
+  },
+  methods: {
+    doLogin: function() {
+      var hasErr = false;
+      
+      this.err.name.isValid = true;
+      this.err.pwd.isValid = true;
+      if((this.name == this.a1.id && this.pwd == this.a1.password) || (this.name == this.a2.id && this.pwd == this.a2.password) || (this.name == this.a3.id && this.pwd == this.a3.password) || (this.name == this.a4.id && this.pwd == this.a4.password)){
+        	hasErr = false;
+        }
+      else
+      		hasErr = true;
+    	
+      
+      if(hasErr == false){
+      if(confirm("Login Successfull")) window.open("weather.html");
+        //alert('Login Successful');
+        
+      }
+      if(hasErr == true)
+      	alert('Invalid Credentials');
+    },
+     getFormValues: function() {
+               var authenticate = false;
+               for(i=1;i<=4 ;i++){
+                  if(obj.employees[i].firstName == this.name){
+                      if(obj.employees[i].lastName == this.pwd){
+                          authenticate = true;
+                      }
+                  }
+               }
+              var hasErr = false;
+               // write code for validating error
+              if(hasErr == false && authenticate == true){
+              		//Checkweather: true;
+                  alert('login success');
+              }
+          },
+  }
+});
+</script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
+
+
